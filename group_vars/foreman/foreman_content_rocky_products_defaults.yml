@@ -32,6 +32,8 @@
 
 # foreman_products_defaults_download_policy_rocky8_sig_core: "{{ foreman_products_defaults_download_policy_rocky8 }}"
 # foreman_products_defaults_download_policy_rocky8_sig_cloud: "{{ foreman_products_defaults_download_policy_rocky8 }}"
+# foreman_products_defaults_download_policy_rocky8_sig_hpc: "{{ foreman_products_defaults_download_policy_rocky8 }}"
+# foreman_products_defaults_download_policy_rocky8_sig_security: "{{ foreman_products_defaults_download_policy_rocky8 }}"
 
 # foreman_products_defaults_mirroring_policy_rocky8: "{{ foreman_products_defaults_mirroring_policy_rocky }}"
 
@@ -45,6 +47,8 @@
 
 # foreman_products_defaults_mirroring_policy_rocky8_sig_core: "{{ foreman_products_defaults_mirroring_policy_rocky8 }}"
 # foreman_products_defaults_mirroring_policy_rocky8_sig_cloud: "{{ foreman_products_defaults_mirroring_policy_rocky8 }}"
+# foreman_products_defaults_mirroring_policy_rocky8_sig_hpc: "{{ foreman_products_defaults_mirroring_policy_rocky8 }}"
+# foreman_products_defaults_mirroring_policy_rocky8_sig_security: "{{ foreman_products_defaults_mirroring_policy_rocky8 }}"
 
 # foreman_products_defaults_verify_ssl_on_sync_rocky8: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky | bool }}"
 
@@ -58,6 +62,8 @@
 
 # foreman_products_defaults_verify_ssl_on_sync_rocky8_sig_core: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky8 | bool }}"
 # foreman_products_defaults_verify_ssl_on_sync_rocky8_sig_cloud: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky8 | bool }}"
+# foreman_products_defaults_verify_ssl_on_sync_rocky8_sig_hpc: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky8 | bool }}"
+# foreman_products_defaults_verify_ssl_on_sync_rocky8_sig_security: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky8 | bool }}"
 
 # foreman_products_defaults_http_proxy_policy_rocky8: "{{ foreman_products_defaults_http_proxy_policy_rocky }}"
 
@@ -71,6 +77,8 @@
 
 # foreman_products_defaults_http_proxy_policy_rocky8_sig_core: "{{ foreman_products_defaults_http_proxy_policy_rocky8 }}"
 # foreman_products_defaults_http_proxy_policy_rocky8_sig_cloud: "{{ foreman_products_defaults_http_proxy_policy_rocky8 }}"
+# foreman_products_defaults_http_proxy_policy_rocky8_sig_hpc: "{{ foreman_products_defaults_http_proxy_policy_rocky8 | bool }}"
+# foreman_products_defaults_http_proxy_policy_rocky8_sig_security: "{{ foreman_products_defaults_http_proxy_policy_rocky8 | bool }}"
 
 # foreman_products_defaults_unprotected_rocky8: "{{ foreman_products_defaults_unprotected_rocky | bool }}"
 
@@ -84,6 +92,8 @@
 
 # foreman_products_defaults_unprotected_rocky8_sig_core: "{{ foreman_products_defaults_unprotected_rocky8 | bool }}"
 # foreman_products_defaults_unprotected_rocky8_sig_cloud: "{{ foreman_products_defaults_unprotected_rocky8 | bool }}"
+# foreman_products_defaults_unprotected_rocky8_sig_hpc: "{{ foreman_products_defaults_unprotected_rocky8 | bool }}"
+# foreman_products_defaults_unprotected_rocky8_sig_security: "{{ foreman_products_defaults_unprotected_rocky8 | bool }}"
 
 ### ROCKY 9
 
@@ -98,6 +108,9 @@
 
 # foreman_products_defaults_download_policy_rocky9_sig_core: "{{ foreman_products_defaults_download_policy_rocky9 }}"
 # foreman_products_defaults_download_policy_rocky9_sig_cloud: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_download_policy_rocky9_sig_hpc: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_download_policy_rocky9_sig_kernel: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_download_policy_rocky9_sig_security: "{{ foreman_products_defaults_download_policy_rocky9 }}"
 
 # foreman_products_defaults_mirroring_policy_rocky9: "{{ foreman_products_defaults_mirroring_policy_rocky }}"
 
@@ -110,6 +123,9 @@
 
 # foreman_products_defaults_mirroring_policy_rocky9_sig_core: "{{ foreman_products_defaults_mirroring_policy_rocky9 }}"
 # foreman_products_defaults_mirroring_policy_rocky9_sig_cloud: "{{ foreman_products_defaults_mirroring_policy_rocky9 }}"
+# foreman_products_defaults_mirroring_policy_rocky9_sig_hpc: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_mirroring_policy_rocky9_sig_kernel: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_mirroring_policy_rocky9_sig_security: "{{ foreman_products_defaults_download_policy_rocky9 }}"
 
 # foreman_products_defaults_verify_ssl_on_sync_rocky9: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky | bool }}"
 
@@ -122,6 +138,9 @@
 
 # foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_core: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky9 | bool }}"
 # foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_cloud: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky9 | bool }}"
+# foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_hpc: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_kernel: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_security: "{{ foreman_products_defaults_download_policy_rocky9 }}"
 
 # foreman_products_defaults_http_proxy_policy_rocky9: "{{ foreman_products_defaults_http_proxy_policy_rocky }}"
 
@@ -134,6 +153,9 @@
 
 # foreman_products_defaults_http_proxy_policy_rocky9_sig_core: "{{ foreman_products_defaults_http_proxy_policy_rocky9 }}"
 # foreman_products_defaults_http_proxy_policy_rocky9_sig_cloud: "{{ foreman_products_defaults_http_proxy_policy_rocky9 }}"
+# foreman_products_defaults_http_proxy_policy_rocky9_sig_hpc: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_http_proxy_policy_rocky9_sig_kernel: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_http_proxy_policy_rocky9_sig_security: "{{ foreman_products_defaults_download_policy_rocky9 }}"
 
 # foreman_products_defaults_unprotected_rocky9: "{{ foreman_products_defaults_unprotected_rocky | bool }}"
 
@@ -146,3 +168,6 @@
 
 # foreman_products_defaults_unprotected_rocky9_sig_core: "{{ foreman_products_defaults_unprotected_rocky9 | bool }}"
 # foreman_products_defaults_unprotected_rocky9_sig_cloud: "{{ foreman_products_defaults_unprotected_rocky9 | bool }}"
+# foreman_products_defaults_unprotected_rocky9_sig_hpc: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_unprotected_rocky9_sig_kernel: "{{ foreman_products_defaults_download_policy_rocky9 }}"
+# foreman_products_defaults_unprotected_rocky9_sig_security: "{{ foreman_products_defaults_download_policy_rocky9 }}"

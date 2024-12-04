@@ -52,12 +52,9 @@
 # foreman_enable_rocky810_default_ak: "{{ foreman_enable_rocky810_default_ccv | bool }}"
 
 # foreman_enable_rocky8_sig_core: false
-# foreman_enable_rocky8_sig_core_common: "{{ foreman_enable_rocky8_sig_core | bool }}"
-# foreman_enable_rocky8_sig_core_infra: false
-
 # foreman_enable_rocky8_sig_cloud: false
-# foreman_enable_rocky8_sig_cloud_common: "{{ foreman_enable_rocky8_sig_cloud | bool }}"
-# foreman_enable_rocky8_sig_cloud_kernel: false
+# foreman_enable_rocky8_sig_hpc: false
+# foreman_enable_rocky8_sig_security: false
 
 ### ROCKY 9
 
@@ -96,9 +93,7 @@
 # foreman_enable_rocky95_default_ak: "{{ foreman_enable_rocky95_default_ccv | bool }}"
 
 # foreman_enable_rocky9_sig_core: false
-# foreman_enable_rocky9_sig_core_common: "{{ foreman_enable_rocky9_sig_core | bool }}"
-# foreman_enable_rocky9_sig_core_infra: false
-
 # foreman_enable_rocky9_sig_cloud: false
-# foreman_enable_rocky9_sig_cloud_common: "{{ foreman_enable_rocky9_sig_cloud | bool }}"
-# foreman_enable_rocky9_sig_cloud_kernel: false
+# foreman_enable_rocky9_sig_hpc: false
+# foreman_enable_rocky9_sig_kernel: false
+# foreman_enable_rocky9_sig_security: false

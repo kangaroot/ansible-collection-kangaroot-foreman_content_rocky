@@ -4,16 +4,16 @@
 foreman_products_defaults: &foreman_products_defaults
   content_type: yum
   gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-rockyofficial"
-  download_policy: "{{ foreman_products_defaults_download_policy_rocky8 }}"
+  download_policy: "{{ foreman_products_defaults_download_policy_rocky9 }}"
   # mirror_on_sync: True
   # mirroring_policy: "additive"
   # mirroring_policy: "mirror_content_only"
   # mirroring_policy: "mirror_complete"
-  mirroring_policy: "{{ foreman_products_defaults_mirroring_policy_rocky8 }}"
-  verify_ssl_on_sync: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky8 | bool }}"
+  mirroring_policy: "{{ foreman_products_defaults_mirroring_policy_rocky9 }}"
+  verify_ssl_on_sync: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky9 | bool }}"
   # http_proxy: Default Proxy
-  http_proxy_policy: "{{ foreman_products_defaults_http_proxy_policy_rocky8 }}"
-  unprotected: "{{ foreman_products_defaults_unprotected_rocky8 | bool }}"
+  http_proxy_policy: "{{ foreman_products_defaults_http_proxy_policy_rocky9 }}"
+  unprotected: "{{ foreman_products_defaults_unprotected_rocky9 | bool }}"
 
 
 foreman_products_defaults_rocky9_sig_core: &foreman_products_defaults_rocky9_sig_core
@@ -32,106 +32,180 @@ foreman_products_defaults_rocky9_sig_cloud: &foreman_products_defaults_rocky9_si
   http_proxy_policy: "{{ foreman_products_defaults_http_proxy_policy_rocky9_sig_cloud }}"
   unprotected: "{{ foreman_products_defaults_unprotected_rocky9_sig_cloud | bool }}"
 
+foreman_products_defaults_rocky9_sig_hpc: &foreman_products_defaults_rocky9_sig_hpc
+  <<: *foreman_products_defaults
+  download_policy: "{{ foreman_products_defaults_download_policy_rocky9_sig_hpc }}"
+  mirroring_policy: "{{ foreman_products_defaults_mirroring_policy_rocky9_sig_hpc }}"
+  verify_ssl_on_sync: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_hpc | bool }}"
+  http_proxy_policy: "{{ foreman_products_defaults_http_proxy_policy_rocky9_sig_hpc }}"
+  unprotected: "{{ foreman_products_defaults_unprotected_rocky9_sig_hpc | bool }}"
 
-foreman_products_rocky9_sig_core_common:
+foreman_products_defaults_rocky9_sig_kernel: &foreman_products_defaults_rocky9_sig_kernel
+  <<: *foreman_products_defaults
+  download_policy: "{{ foreman_products_defaults_download_policy_rocky9_sig_kernel }}"
+  mirroring_policy: "{{ foreman_products_defaults_mirroring_policy_rocky9_sig_kernel }}"
+  verify_ssl_on_sync: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_kernel | bool }}"
+  http_proxy_policy: "{{ foreman_products_defaults_http_proxy_policy_rocky9_sig_kernel }}"
+  unprotected: "{{ foreman_products_defaults_unprotected_rocky9_sig_kernel | bool }}"
+
+foreman_products_defaults_rocky9_sig_security: &foreman_products_defaults_rocky9_sig_security
+  <<: *foreman_products_defaults
+  download_policy: "{{ foreman_products_defaults_download_policy_rocky9_sig_security }}"
+  mirroring_policy: "{{ foreman_products_defaults_mirroring_policy_rocky9_sig_security }}"
+  verify_ssl_on_sync: "{{ foreman_products_defaults_verify_ssl_on_sync_rocky9_sig_security | bool }}"
+  http_proxy_policy: "{{ foreman_products_defaults_http_proxy_policy_rocky9_sig_security }}"
+  unprotected: "{{ foreman_products_defaults_unprotected_rocky9_sig_security | bool }}"
+
+
+foreman_products_rocky9_sig_core:
   - name: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
     label: "{{ foreman_product_label_prefix | default('') }}Rocky"
-    organization: "{{ foreman_organization_rocky9_sig_core_common }}"
+    organization: "{{ foreman_organization_rocky9_sig_core }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Core Common"
         label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-core-common"
         <<: *foreman_products_defaults_rocky9_sig_core
-        url: "{{ foreman_repo_baseurl_rocky9_sig }}/8/core/x86_64/core-common/"
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/core/x86_64/core-common/"
         gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-Core"
-        organization: "{{ foreman_organization_rocky9_sig_core_common }}"
-
-foreman_products_rocky9_sig_core_infra:
-  - name: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
-    label: "{{ foreman_product_label_prefix | default('') }}Rocky"
-    organization: "{{ foreman_organization_rocky9_sig_core_infra }}"
-    repositories:
+        organization: "{{ foreman_organization_rocky9_sig_core }}"
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Core Infrastructure"
         label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-core-infra"
         <<: *foreman_products_defaults_rocky9_sig_core
-        url: "{{ foreman_repo_baseurl_rocky9_sig }}/8/core/x86_64/core-infra/"
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/core/x86_64/core-infra/"
         gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-Core"
-        organization: "{{ foreman_organization_rocky9_sig_core_infra }}"
+        organization: "{{ foreman_organization_rocky9_sig_core }}"
 
-foreman_products_rocky9_sig_core: "{{ [] |
-  union( foreman_products_rocky9_sig_core_common | default([]) if foreman_enable_rocky9_sig_core_common else [] ) |
-  union( foreman_products_rocky9_sig_core_infra | default([]) if foreman_enable_rocky9_sig_core_infra else [] )
-  }}"
-
-foreman_content_views_rocky9_sig_core_common:
+foreman_content_views_rocky9_sig_core:
   - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_core_common"
-    organization: "{{ foreman_organization_rocky9_sig_core_common }}"
+    organization: "{{ foreman_organization_rocky9_sig_core }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Core Common"
         product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
-    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_core_common }}"
-
-foreman_content_views_rocky9_sig_core_infra:
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_core }}"
   - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_core_infra"
-    organization: "{{ foreman_organization_rocky9_sig_core_infra }}"
+    organization: "{{ foreman_organization_rocky9_sig_core }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Core Infrastructure"
         product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
-    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_core_infra }}"
-
-foreman_content_views_rocky9_sig_core: "{{ [] |
-  union( foreman_content_views_rocky9_sig_core_common | default([]) if foreman_enable_rocky9_sig_core_common else [] ) |
-  union( foreman_content_views_rocky9_sig_core_infra | default([]) if foreman_enable_rocky9_sig_core_infra else [] )
-  }}"
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_core }}"
 
 
-foreman_products_rocky9_sig_cloud_common:
+foreman_products_rocky9_sig_cloud:
   - name: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
     label: "{{ foreman_product_label_prefix | default('') }}Rocky"
-    organization: "{{ foreman_organization_rocky9_sig_cloud_common }}"
+    organization: "{{ foreman_organization_rocky9_sig_cloud }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Cloud Common"
         label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-cloud-common"
         <<: *foreman_products_defaults_rocky9_sig_cloud
-        url: "{{ foreman_repo_baseurl_rocky9_sig }}/8/cloud/x86_64/cloud-common/"
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/cloud/x86_64/cloud-common/"
         gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-Cloud"
-        organization: "{{ foreman_organization_rocky9_sig_cloud_common }}"
-
-foreman_products_rocky9_sig_cloud_kernel:
-  - name: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
-    label: "{{ foreman_product_label_prefix | default('') }}Rocky"
-    organization: "{{ foreman_organization_rocky9_sig_cloud_kernel }}"
-    repositories:
+        organization: "{{ foreman_organization_rocky9_sig_cloud }}"
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Cloud Kernel"
         label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-cloud-kernel"
         <<: *foreman_products_defaults_rocky9_sig_cloud
-        url: "{{ foreman_repo_baseurl_rocky9_sig }}/8/cloud/x86_64/cloud-kernel/"
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/cloud/x86_64/cloud-kernel/"
         gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-Cloud"
-        organization: "{{ foreman_organization_rocky9_sig_cloud_kernel }}"
+        organization: "{{ foreman_organization_rocky9_sig_cloud }}"
 
-foreman_products_rocky9_sig_cloud: "{{ [] |
-  union( foreman_products_rocky9_sig_cloud_common | default([]) if foreman_enable_rocky9_sig_cloud_common else [] ) |
-  union( foreman_products_rocky9_sig_cloud_kernel | default([]) if foreman_enable_rocky9_sig_cloud_kernel else [] )
-  }}"
-
-foreman_content_views_rocky9_cloud_common:
+foreman_content_views_rocky9_cloud:
   - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_cloud_common"
-    organization: "{{ foreman_organization_rocky9_sig_cloud_common }}"
+    organization: "{{ foreman_organization_rocky9_sig_cloud }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Cloud Common"
         product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
-    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_cloud_common }}"
-
-foreman_content_views_rocky9_cloud_kernel:
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_cloud }}"
   - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_cloud_kernel"
-    organization: "{{ foreman_organization_rocky9_sig_cloud_kernel }}"
+    organization: "{{ foreman_organization_rocky9_sig_cloud }}"
     repositories:
       - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Cloud Kernel"
         product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
-    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_cloud_kernel }}"
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_cloud }}"
 
-foreman_content_views_rocky9_cloud: "{{ [] |
-  union( foreman_content_views_rocky9_sig_cloud_common | default([]) if foreman_enable_rocky9_sig_cloud_common else [] ) |
-  union( foreman_content_views_rocky9_sig_cloud_kernel | default([]) if foreman_enable_rocky9_sig_cloud_kernel else [] )
-  }}"
 
+foreman_products_rocky9_sig_hpc:
+  - name: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    label: "{{ foreman_product_label_prefix | default('') }}Rocky"
+    organization: "{{ foreman_organization_rocky9_sig_hpc }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG HPC Common"
+        label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-hpc-common"
+        <<: *foreman_products_defaults_rocky9_sig_hpc
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/hpc/x86_64/hpc-common/"
+        gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-HPC"
+        organization: "{{ foreman_organization_rocky9_sig_hpc }}"
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG HPC Core"
+        label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-hpc-infra"
+        <<: *foreman_products_defaults_rocky9_sig_hpc
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/hpc/x86_64/hpc-core/"
+        gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-HPC"
+        organization: "{{ foreman_organization_rocky9_sig_hpc }}"
+
+foreman_content_views_rocky9_sig_hpc:
+  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_hpc_common"
+    organization: "{{ foreman_organization_rocky9_sig_hpc }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG HPC Common"
+        product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_hpc }}"
+  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_hpc_core"
+    organization: "{{ foreman_organization_rocky9_sig_hpc }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG HPC Core"
+        product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_hpc }}"
+
+
+foreman_products_rocky9_sig_kernel:
+  - name: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    label: "{{ foreman_product_label_prefix | default('') }}Rocky"
+    organization: "{{ foreman_organization_rocky9_sig_kernel }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Kernel Mainline"
+        label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-kernel-mainline"
+        <<: *foreman_products_defaults_rocky9_sig_kernel
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/kernel/x86_64/kernel-mainline/"
+        gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-Kernel"
+        organization: "{{ foreman_organization_rocky9_sig_kernel }}"
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Kernel LTS"
+        label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-kernel-lts"
+        <<: *foreman_products_defaults_rocky9_sig_kernel
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/kernel/x86_64/kernel-lts/"
+        gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-Kernel"
+        organization: "{{ foreman_organization_rocky9_sig_kernel }}"
+
+foreman_content_views_rocky9_sig_kernel:
+  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_kernel_mainline"
+    organization: "{{ foreman_organization_rocky9_sig_kernel }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Kernel Mainline"
+        product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_kernel }}"
+  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_kernel_lts"
+    organization: "{{ foreman_organization_rocky9_sig_kernel }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Kernel LTS"
+        product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_kernel }}"
+
+
+foreman_products_rocky9_sig_security:
+  - name: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    label: "{{ foreman_product_label_prefix | default('') }}Rocky"
+    organization: "{{ foreman_organization_rocky9_sig_security }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Security Common"
+        label: "{{ foreman_repo_label_prefix | default('') }}rocky-9-security-common"
+        <<: *foreman_products_defaults_rocky9_sig_security
+        url: "{{ foreman_repo_baseurl_rocky9_sig }}/9/security/x86_64/security-common/"
+        gpg_key: "{{ foreman_cred_name_prefix | default('') }}RPM-GPG-KEY-Rocky-SIG-Security"
+        organization: "{{ foreman_organization_rocky9_sig_security }}"
+
+foreman_content_views_rocky9_sig_security:
+  - name: "{{ foreman_cv_prefix | default('cv_') }}{{ foreman_cv_name_prefix | default('') }}rocky9_security_common"
+    organization: "{{ foreman_organization_rocky9_sig_security }}"
+    repositories:
+      - name: "{{ foreman_repo_name_prefix | default('') }}Rocky Linux 9 - SIG Security Common"
+        product: "{{ foreman_product_name_prefix | default('') }}Rocky Linux"
+    allow_promote: "{{ foreman_cv_allow_promote_rocky9_sig_security }}"
 

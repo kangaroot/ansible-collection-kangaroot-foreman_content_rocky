@@ -21,12 +21,9 @@
 # foreman_organization_rocky810: "{{ foreman_organization_rocky8 }}"
 
 # foreman_organization_rocky8_sig_core: "{{ foreman_organization_rocky8 }}"
-# foreman_organization_rocky8_sig_core_common: "{{ foreman_organization_rocky8_sig_core }}"
-# foreman_organization_rocky8_sig_core_infra: "{{ foreman_organization_rocky8_sig_core }}"
-
 # foreman_organization_rocky8_sig_cloud: "{{ foreman_organization_rocky8 }}"
-# foreman_organization_rocky8_sig_cloud_common: "{{ foreman_organization_rocky8_sig_cloud }}"
-# foreman_organization_rocky8_sig_cloud_kernel: "{{ foreman_organization_rocky8_sig_cloud }}"
+# foreman_organization_rocky8_sig_hpc: "{{ foreman_organization_rocky8 }}"
+# foreman_organization_rocky8_sig_security: "{{ foreman_organization_rocky8 }}"
 
 ### ROCKY 9
 
@@ -40,9 +37,7 @@
 # foreman_organization_rocky95: "{{ foreman_organization_rocky9 }}"
 
 # foreman_organization_rocky9_sig_core: "{{ foreman_organization_rocky9 }}"
-# foreman_organization_rocky9_sig_core_common: "{{ foreman_organization_rocky9_sig_core }}"
-# foreman_organization_rocky9_sig_core_infra: "{{ foreman_organization_rocky9_sig_core }}"
-
 # foreman_organization_rocky9_sig_cloud: "{{ foreman_organization_rocky9 }}"
-# foreman_organization_rocky9_sig_cloud_common: "{{ foreman_organization_rocky9_sig_cloud }}"
-# foreman_organization_rocky9_sig_cloud_kernel: "{{ foreman_organization_rocky9_sig_cloud }}"
+# foreman_organization_rocky9_sig_hpc: "{{ foreman_organization_rocky9 }}"
+# foreman_organization_rocky9_sig_kernel: "{{ foreman_organization_rocky9 }}"
+# foreman_organization_rocky9_sig_security: "{{ foreman_organization_rocky9 }}"
