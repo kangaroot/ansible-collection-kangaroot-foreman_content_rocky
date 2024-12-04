@@ -252,6 +252,12 @@ foreman_operatingsystems_rocky9:
     <<: *foreman_operatingsystems_defaults
   - name: "Rocky"
     major: "9"
+    minor: "5"
+    description: "Rocky Linux release 9.5 (Blue Onyx)"
+    default_templates: "{{ foreman_operatingsystems_rocky95_default_templates | default( foreman_operatingsystems_rocky9_default_templates | default( foreman_operatingsystems_rocky_default_templates | default( foreman_operatingsystems_el_default_templates | default([]) ) ) ) }}"
+    <<: *foreman_operatingsystems_defaults
+  - name: "Rocky"
+    major: "9"
     minor: ""
     description: "Rocky Linux 9"
     default_templates: "{{ foreman_operatingsystems_rocky9_default_templates | default( foreman_operatingsystems_rocky_default_templates | default( foreman_operatingsystems_el_default_templates | default([]) ) ) }}"
@@ -272,6 +278,7 @@ foreman_installation_media_defaults: &foreman_installation_media_defaults
     - Rocky Linux release 9.2 (Blue Onyx)
     - Rocky Linux release 9.3 (Blue Onyx)
     - Rocky Linux release 9.4 (Blue Onyx)
+    - Rocky Linux release 9.5 (Blue Onyx)
     - Rocky Linux 9
 
 

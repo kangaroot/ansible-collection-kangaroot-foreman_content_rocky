@@ -82,6 +82,10 @@
 # foreman_ccv_allow_promote_rocky94: "{{ foreman_ccv_allow_promote_rocky9 | bool }}"
 # foreman_ccv_auto_publish_rocky94: "{{ foreman_ccv_auto_publish_rocky9 | bool }}"
 
+# foreman_cv_allow_promote_rocky95: "{{ foreman_cv_allow_promote_rocky9 | bool }}"
+# foreman_ccv_allow_promote_rocky95: "{{ foreman_ccv_allow_promote_rocky9 | bool }}"
+# foreman_ccv_auto_publish_rocky95: "{{ foreman_ccv_auto_publish_rocky9 | bool }}"
+
 # foreman_cv_allow_promote_rocky9_sig_core: "{{ foreman_cv_allow_promote_rocky9 | bool }}"
 # foreman_cv_allow_promote_rocky9_sig_core_common: "{{ foreman_cv_allow_promote_rocky9_sig_core | bool }}"
 # foreman_cv_allow_promote_rocky9_sig_core_infra: "{{ foreman_cv_allow_promote_rocky9_sig_core | bool }}"

@@ -72,24 +72,28 @@
 # foreman_enable_rocky92: false
 # foreman_enable_rocky93: false
 # foreman_enable_rocky94: false
+# foreman_enable_rocky95: false
 
 # foreman_enable_rocky90_kickstart: "{{ foreman_enable_rocky90 | bool }}"
 # foreman_enable_rocky91_kickstart: "{{ foreman_enable_rocky91 | bool }}"
 # foreman_enable_rocky92_kickstart: "{{ foreman_enable_rocky92 | bool }}"
 # foreman_enable_rocky93_kickstart: "{{ foreman_enable_rocky93 | bool }}"
 # foreman_enable_rocky94_kickstart: "{{ foreman_enable_rocky94 | bool }}"
+# foreman_enable_rocky95_kickstart: "{{ foreman_enable_rocky95 | bool }}"
 
 # foreman_enable_rocky90_default_ccv: "{{ foreman_enable_rocky9_default_ccv | bool }}"
 # foreman_enable_rocky91_default_ccv: "{{ foreman_enable_rocky9_default_ccv | bool }}"
 # foreman_enable_rocky92_default_ccv: "{{ foreman_enable_rocky9_default_ccv | bool }}"
 # foreman_enable_rocky93_default_ccv: "{{ foreman_enable_rocky9_default_ccv | bool }}"
 # foreman_enable_rocky94_default_ccv: "{{ foreman_enable_rocky9_default_ccv | bool }}"
+# foreman_enable_rocky95_default_ccv: "{{ foreman_enable_rocky9_default_ccv | bool }}"
 
 # foreman_enable_rocky90_default_ak: "{{ foreman_enable_rocky90_default_ccv | bool }}"
 # foreman_enable_rocky91_default_ak: "{{ foreman_enable_rocky91_default_ccv | bool }}"
 # foreman_enable_rocky92_default_ak: "{{ foreman_enable_rocky92_default_ccv | bool }}"
 # foreman_enable_rocky93_default_ak: "{{ foreman_enable_rocky93_default_ccv | bool }}"
 # foreman_enable_rocky94_default_ak: "{{ foreman_enable_rocky94_default_ccv | bool }}"
+# foreman_enable_rocky95_default_ak: "{{ foreman_enable_rocky95_default_ccv | bool }}"
 
 # foreman_enable_rocky9_sig_core: false
 # foreman_enable_rocky9_sig_core_common: "{{ foreman_enable_rocky9_sig_core | bool }}"

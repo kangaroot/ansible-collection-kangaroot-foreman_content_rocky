@@ -37,6 +37,7 @@
 # foreman_organization_rocky92: "{{ foreman_organization_rocky9 }}"
 # foreman_organization_rocky93: "{{ foreman_organization_rocky9 }}"
 # foreman_organization_rocky94: "{{ foreman_organization_rocky9 }}"
+# foreman_organization_rocky95: "{{ foreman_organization_rocky9 }}"
 
 # foreman_organization_rocky9_sig_core: "{{ foreman_organization_rocky9 }}"
 # foreman_organization_rocky9_sig_core_common: "{{ foreman_organization_rocky9_sig_core }}"
