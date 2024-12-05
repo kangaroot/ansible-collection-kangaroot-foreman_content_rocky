@@ -632,8 +632,25 @@ foreman_installation_media_rocky_defaults: &foreman_installation_media_rocky_def
   organizations: "{{ foreman_all_organizations_namelist }}"
   locations: "{{ foreman_all_locations_namelist }}"
   operatingsystems: "{{ [] |
-    union( [ 'Rocky Linux 8.4', 'Rocky Linux 8.5', 'Rocky Linux 8.6', 'Rocky Linux 8.7', 'Rocky Linux 8.8', 'Rocky Linux 8.9', 'Rocky Linux 8.10', 'Rocky Linux 8' ] if foreman_enable_rocky8 | bool else [] ) |
-    union( [ 'Rocky Linux 9.0', 'Rocky Linux 9.1', 'Rocky Linux 9.2', 'Rocky Linux 9.3', 'Rocky Linux 9.4', 'Rocky Linux 9.5', 'Rocky Linux 9' ] if foreman_enable_rocky9 | bool else [] )
+    union( [ 
+      'Rocky Linux release 8.4 (Green Obsidian)',
+      'Rocky Linux release 8.5 (Green Obsidian)',
+      'Rocky Linux release 8.6 (Green Obsidian)',
+      'Rocky Linux release 8.7 (Green Obsidian)',
+      'Rocky Linux release 8.8 (Green Obsidian)',
+      'Rocky Linux release 8.9 (Green Obsidian)',
+      'Rocky Linux release 8.10 (Green Obsidian)',
+      'Rocky Linux 8'
+      ] if foreman_enable_rocky8 | bool else [] ) |
+    union( [
+      'Rocky Linux release 9.0 (Blue Onyx)',
+      'Rocky Linux release 9.1 (Blue Onyx)',
+      'Rocky Linux release 9.2 (Blue Onyx)',
+      'Rocky Linux release 9.3 (Blue Onyx)',
+      'Rocky Linux release 9.4 (Blue Onyx)',
+      'Rocky Linux release 9.5 (Blue Onyx)',
+      'Rocky Linux 9'
+      ] if foreman_enable_rocky9 | bool else [] )
     }}"
 
 foreman_installation_media_rocky_main:
