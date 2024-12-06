@@ -211,9 +211,11 @@ foreman_operatingsystems_defaults: &foreman_operatingsystems_defaults
     - x86_64
   # ptables:
   #   - Kickstart default
+  #   - Kickstart default encrypted
   #   - Kickstart custom
   ptables: "{{
     [ 'Kickstart default',
+      'Kickstart default encrypted',
       'Kickstart custom' ] |
       union( foreman_partition_tables | default([]) | selectattr('os_family', 'defined') | selectattr('os_family', '==', 'Redhat') | map(attribute='name') | list )
     }}"
